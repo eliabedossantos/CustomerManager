@@ -13,6 +13,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from "../../navigation/types";
 import { loginSchema, LoginFormData } from '../../schemas/auth';
 import InputText from '../../components/InputText';
+import { useAuth } from "../../hooks/contexts";
 
 type LoginScreenProps = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'Login'>;
@@ -20,6 +21,7 @@ type LoginScreenProps = {
 
 export default function LoginScreen({ navigation }: LoginScreenProps) {
   const toast = useToast();
+  const { signIn } = useAuth();
   
   const {
     control,
@@ -34,11 +36,13 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
   });
 
   const onSubmit = async (data: LoginFormData) => {
-      console.log('Login data:', data);
     try {
-     
-    } catch (error) {
-      
+      await signIn(data.email, data.password);
+    } catch (error: any) {
+      toast.show({
+        description: error?.message || "Login failed.",
+        placement: "top"
+      });
     }
   };
 
