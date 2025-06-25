@@ -2,7 +2,6 @@ import React from "react";
 import { 
     Text,
     VStack,
-    HStack,
     Button,
     Heading,
     Center,
@@ -13,7 +12,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from "../../navigation/types";
 import { loginSchema, LoginFormData } from '../../schemas/auth';
-import Input from '../../components/Input';
+import InputText from '../../components/InputText';
 
 type LoginScreenProps = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'Login'>;
@@ -35,20 +34,11 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
   });
 
   const onSubmit = async (data: LoginFormData) => {
+      console.log('Login data:', data);
     try {
-      console.log('Dados do login:', data);
-      
-      toast.show({
-        description: "Successfully logged in!",
-        placement: "top"
-      });
-    
-      
+     
     } catch (error) {
-      toast.show({
-        description: "Error logging in, please try again",
-        placement: "top"
-      });
+      
     }
   };
 
@@ -65,23 +55,22 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
         </VStack>
 
         <VStack space={4}>
-          <Input
+          <InputText
             name="email"
             label="E-mail"
             placeholder="E-mail"
             control={control}
             error={errors.email}
             isRequired
-            type="text"
+            keyboardType="email-address"
           />
-          
-          <Input
+          <InputText
             name="password"
             label="Password"
             placeholder="Password"
             control={control}
             error={errors.password}
-            type="password"
+            secureTextEntry
             isRequired
           />
         </VStack>
