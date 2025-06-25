@@ -5,24 +5,37 @@
  * @format
  */
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import Routes from './routes';
+import { extendTheme, NativeBaseProvider } from 'native-base';
 
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  return (
-    <View style={styles.container}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <NewAppScreen templateFileName="App.tsx" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+const theme = extendTheme({
+  components: {
+    Input: {
+      baseStyle: {
+        _focus: {
+          borderColor: 'primary.500',
+        },
+        outlineWidth: 1,
+      },
+      sizes: {
+        lg: {
+          fontSize: 'md',
+        },
+      },
+    },
   },
 });
+
+function App() {
+  return (
+    <NativeBaseProvider theme={theme}>
+      <NavigationContainer>
+        <Routes />
+      </NavigationContainer>
+    </NativeBaseProvider>
+  );
+}
 
 export default App;
