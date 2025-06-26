@@ -5,7 +5,7 @@ import {
     Button,
     Heading,
     Center,
-    useToast
+    Toast
 } from 'native-base';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -14,13 +14,13 @@ import { RootStackParamList } from "../../navigation/types";
 import { loginSchema, LoginFormData } from '../../schemas/auth';
 import InputText from '../../components/InputText';
 import { useAuth } from "../../hooks/contexts";
+import { Alert } from "react-native";
 
 type LoginScreenProps = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'Login'>;
 };
 
 export default function LoginScreen({ navigation }: LoginScreenProps) {
-  const toast = useToast();
   const { signIn } = useAuth();
   
   const {
@@ -39,10 +39,8 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
     try {
       await signIn(data.email, data.password);
     } catch (error: any) {
-      toast.show({
-        description: error?.message || "Login failed.",
-        placement: "top"
-      });
+      Alert.alert('Error', error.message);
+      console.log(error)
     }
   };
 

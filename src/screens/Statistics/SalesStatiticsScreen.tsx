@@ -4,6 +4,10 @@ import { VStack, Text, Box, Spinner } from 'native-base';
 import { LineChart } from 'react-native-chart-kit';
 import { useStats } from '../../hooks/contexts';
 import StatsHighlight from '../../components/StatsHighlight';
+import { sumSales, averageSales } from '../../utils/salesStats';
+import { Cliente } from '../../utils/parseCustomerApi';
+
+
 
 export default function SalesStatiticsScreen() {
   const { loading, stats } = useStats();
@@ -23,8 +27,8 @@ export default function SalesStatiticsScreen() {
         {stats.totalSalesPerDay.length > 0 ? (
             <LineChart
                 data={{
-                    labels: stats.totalSalesPerDay.map((item: any) => item.date.slice(5)), // MM-DD
-                    datasets: [{ data: stats.totalSalesPerDay.map((item: any) => item.value) }]
+                    labels: stats.totalSalesPerDay.map((item) => item.date.slice(5)),
+                    datasets: [{ data: stats.totalSalesPerDay.map((item) => item.value) }]
                 }}
                 width={Dimensions.get('window').width - 32}
                 height={220}
@@ -54,7 +58,7 @@ export default function SalesStatiticsScreen() {
               label="Highest Volume"
               value={
                 stats.topVolumeCustomer
-                  ? `${stats.topVolumeCustomer.nome} (R$ ${stats.topVolumeCustomer.vendas.reduce((sum: number, v: any) => sum + v.valor, 0)})`
+                  ? `${stats.topVolumeCustomer.nome} ($ ${sumSales(stats.topVolumeCustomer.vendas)})`
                   : '-'
               }
             />
@@ -63,7 +67,7 @@ export default function SalesStatiticsScreen() {
               label="Highest Average"
               value={
                 stats.topAverageCustomer
-                  ? `${stats.topAverageCustomer.nome} (R$ ${(stats.topAverageCustomer.vendas.reduce((sum: number, v: any) => sum + v.valor, 0) / stats.topAverageCustomer.vendas.length).toFixed(2)})`
+                  ? `${stats.topAverageCustomer.nome} ($ ${averageSales(stats.topAverageCustomer.vendas).toFixed(2)})`
                   : '-'
               }
             />
@@ -72,7 +76,7 @@ export default function SalesStatiticsScreen() {
               label="Most Frequent"
               value={
                 stats.topFrequencyCustomer
-                  ? `${stats.topFrequencyCustomer.nome} (${new Set(stats.topFrequencyCustomer.vendas.map((v: any) => v.data)).size} days)`
+                  ? `${stats.topFrequencyCustomer.nome} (${new Set(stats.topFrequencyCustomer.vendas.map((v) => v.data)).size} days)`
                   : '-'
               }
             />

@@ -1,9 +1,16 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { fetchStats } from '../services/stats';
+import { Cliente } from '../utils/parseCustomerApi';
 
+interface StatsType {
+  totalSalesPerDay: { date: string; value: number }[];
+  topVolumeCustomer: Cliente | null;
+  topAverageCustomer: Cliente | null;
+  topFrequencyCustomer: Cliente | null;
+}
 interface StatsContextData {
   loading: boolean;
-  stats: any;
+  stats: StatsType;
   refreshStats: () => Promise<void>;
 }
 

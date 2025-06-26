@@ -16,14 +16,14 @@ function formatDate(iso: string) {
 
 export default function CustomerListItem({ nome, email, nascimento }: CustomerListItemProps) {
     return (
-        <Box borderBottomWidth={1} borderColor="gray.200" py={3} px={2}>
+        <Box borderBottomWidth={1} borderColor="gray.200" py={4} px={3} mb={2} bg={'blue.100'} rounded={8}>
             <HStack justifyContent="space-between" alignItems="center">
-                <VStack>
-                <Text bold fontSize="md">{nome}</Text>
-                <Text color="gray.500">{email}</Text>
-                <Text color="gray.400" fontSize="sm">
-                    {formatDate(nascimento)}
-                </Text>
+                <VStack maxW={'80%'}>
+                    <Text bold fontSize="md">{nome}</Text>
+                    <Text color="gray.500">{email}</Text>
+                    <Text color="gray.400" fontSize="sm">
+                        {formatDate(nascimento)}
+                    </Text>
                 </VStack>
                 <Badge colorScheme="info" variant="solid">
                     {getMissingLetter(nome)}

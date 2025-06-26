@@ -9,7 +9,7 @@ interface StatsHighlightProps {
 
 export default function StatsHighlight({ colorScheme, label, value }: StatsHighlightProps) {
   return (
-    <Box>
+    <Box mb={2}>
       <Badge colorScheme={colorScheme} mb={1}>{label}</Badge>
       <Text>{value}</Text>
     </Box>

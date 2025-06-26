@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { FlatList, RefreshControl } from 'react-native';
-import { VStack, Spinner } from 'native-base';
+import { VStack, View } from 'native-base';
 import CustomerListItem from '../../components/CustomerListItem';
 import { useCustomer } from '../../hooks/contexts';
 
 export default function ListCustomerScreen() {
     const { customers, loading, fetchCustomers } = useCustomer();
+
 
     useEffect(() => {
         fetchCustomers();
@@ -26,6 +27,8 @@ export default function ListCustomerScreen() {
                 refreshControl={
                     <RefreshControl refreshing={loading} onRefresh={() => fetchCustomers()} />
                 }
+                showsVerticalScrollIndicator={false}
+                ListFooterComponent={ <View height={20} /> }
             />
         </VStack>
     );

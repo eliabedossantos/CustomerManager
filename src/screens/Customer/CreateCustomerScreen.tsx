@@ -1,14 +1,14 @@
 import React from 'react';
-import { VStack, Button, Heading, Center, useToast } from 'native-base';
+import { VStack, Button, Heading, Center } from 'native-base';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import InputText from '../../components/InputText';
 import DatePickerInput from '../../components/DatePickerInput';
 import { customerSchema, CustomerFormData } from '../../schemas/customer';
 import { useCustomer } from '../../hooks/contexts';
+import { Alert } from 'react-native';
 
 export default function CreateCustomerScreen() {
-    const toast = useToast();
     const { addCustomer } = useCustomer();
 
     const {
@@ -32,16 +32,11 @@ export default function CreateCustomerScreen() {
                 email: data.email,
                 nascimento: data.birth,
             });
-            // toast.show({
-            //     description: 'Customer created successfully!',
-            //     placement: 'top',
-            // });
+            Alert.alert('Success', 'Customer created successfully!');
             reset();
         } catch (error) {
-            // toast.show({
-            //     description: 'Error creating customer.',
-            //     placement: 'top',
-            // });
+            console.log(error);
+            Alert.alert('Error', 'Error creating customer!');
         }
     };
 

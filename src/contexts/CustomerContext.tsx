@@ -21,6 +21,7 @@ export function CustomerProvider({ children }: { children: ReactNode }) {
         if (loading) return;
         setLoading(true);
         const response = await fetchCustomersApi();
+        console.log(response)
         const parsed = parseCustomerApiResponse(response);
         setCustomers(parsed);
         setLoading(false);

@@ -38,27 +38,30 @@ export default function AppRoutes() {
         >
             <Drawer.Screen 
                 name="Home" 
-                component={HomeScreen} 
+                component={HomeScreen}
             />
             <Drawer.Screen 
                 name="CreateCustomer" 
                 component={CreateCustomerScreen} 
                 options={{
-                    drawerLabel: "Create a customer"
+                    drawerLabel: "Create a customer",
+                    headerTitle: "Create a customer"
                 }}
             />
             <Drawer.Screen 
                 name="ListCustomers" 
                 component={ListCustomerScreen} 
                 options={{
-                    drawerLabel: "Customers"
+                    drawerLabel: "Customers",
+                    headerTitle: "Customers"
                 }}
             />
             <Drawer.Screen 
                 name="Statistics" 
                 component={SalesStatiticsScreen} 
                 options={{
-                    drawerLabel: "Sales Statistics"
+                    drawerLabel: "Sales Statistics",
+                    headerTitle: "Sales Statistics"
                 }}
             />
 
