@@ -1,8 +1,8 @@
 import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { View, Text } from 'react-native';
 
-const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
 
 function HomeScreen() {
     return (
@@ -14,8 +14,8 @@ function HomeScreen() {
 
 export default function AppRoutes() {
     return (
-        <Stack.Navigator>
-            <Stack.Screen name="Home" component={HomeScreen} />
-        </Stack.Navigator>
+        <Drawer.Navigator initialRouteName="Home">
+            <Drawer.Screen name="Home" component={HomeScreen} />
+        </Drawer.Navigator>
     );
-} 
+}
