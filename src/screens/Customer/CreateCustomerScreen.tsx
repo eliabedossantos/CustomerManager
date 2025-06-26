@@ -5,7 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import InputText from '../../components/InputText';
 import DatePickerInput from '../../components/DatePickerInput';
 import { customerSchema, CustomerFormData } from '../../schemas/customer';
-import { useCustomer } from '../../contexts/CustomerContext';
+import { useCustomer } from '../../hooks/contexts';
 
 export default function CreateCustomerScreen() {
     const toast = useToast();

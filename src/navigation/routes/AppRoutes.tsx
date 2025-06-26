@@ -10,7 +10,7 @@ const Drawer = createDrawerNavigator();
 function HomeScreen() {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Welcome! You are logged in.</Text>
+            <Text>Welcome!</Text>
         </View>
     );
 }
