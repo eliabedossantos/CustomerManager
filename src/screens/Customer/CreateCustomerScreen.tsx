@@ -27,7 +27,11 @@ export default function CreateCustomerScreen() {
 
     const onSubmit = async (data: CustomerFormData) => {
         try {
-            await addCustomer(data);
+            await addCustomer({
+                nome: data.name,
+                email: data.email,
+                nascimento: data.birth,
+            });
             // toast.show({
             //     description: 'Customer created successfully!',
             //     placement: 'top',

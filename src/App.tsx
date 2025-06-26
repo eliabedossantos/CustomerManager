@@ -10,6 +10,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Routes from './routes';
 import { extendTheme, NativeBaseProvider } from 'native-base';
 import { AuthProvider } from './contexts/AuthContext';
+import { CustomerProvider } from './contexts/CustomerContext';
 
 const theme = extendTheme({
   components: {
@@ -32,11 +33,13 @@ const theme = extendTheme({
 function App() {
   return (
     <NativeBaseProvider theme={theme}>
-      <AuthProvider>
-        <NavigationContainer>
-          <Routes />
-        </NavigationContainer>
-      </AuthProvider>
+        <AuthProvider>
+          <CustomerProvider>
+            <NavigationContainer>
+              <Routes />
+            </NavigationContainer>
+          </CustomerProvider>
+        </AuthProvider>
     </NativeBaseProvider>
   );
 }

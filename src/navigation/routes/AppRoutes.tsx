@@ -3,6 +3,7 @@ import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerI
 import CreateCustomerScreen from '../../screens/Customer/CreateCustomerScreen';
 import { View, Text } from 'react-native';
 import { useAuth } from '../../hooks/contexts';
+import ListCustomerScreen from '../../screens/Customer/ListCustomerScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -43,6 +44,13 @@ export default function AppRoutes() {
                 component={CreateCustomerScreen} 
                 options={{
                     drawerLabel: "Create a customer"
+                }}
+            />
+            <Drawer.Screen 
+                name="ListCustomers" 
+                component={ListCustomerScreen} 
+                options={{
+                    drawerLabel: "Customers"
                 }}
             />
 
