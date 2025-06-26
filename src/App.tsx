@@ -11,6 +11,7 @@ import Routes from './routes';
 import { extendTheme, NativeBaseProvider } from 'native-base';
 import { AuthProvider } from './contexts/AuthContext';
 import { CustomerProvider } from './contexts/CustomerContext';
+import { StatsProvider } from './contexts/StatsContext';
 
 const theme = extendTheme({
   components: {
@@ -35,9 +36,11 @@ function App() {
     <NativeBaseProvider theme={theme}>
         <AuthProvider>
           <CustomerProvider>
-            <NavigationContainer>
-              <Routes />
-            </NavigationContainer>
+            <StatsProvider>
+              <NavigationContainer>
+                <Routes />
+              </NavigationContainer>
+            </StatsProvider>
           </CustomerProvider>
         </AuthProvider>
     </NativeBaseProvider>
