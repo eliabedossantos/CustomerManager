@@ -11,7 +11,7 @@ interface CustomerListItemProps {
 function formatDate(iso: string) {
     if (!iso) return '';
     const [year, month, day] = iso.split('-');
-    return `${year}/${month}/${day}/`;
+    return `${year}/${month}/${day}`;
 }
 
 export default function CustomerListItem({ nome, email, nascimento }: CustomerListItemProps) {
