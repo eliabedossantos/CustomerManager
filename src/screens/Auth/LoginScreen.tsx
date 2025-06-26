@@ -85,7 +85,7 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
           bg="primary.600"
           _pressed={{ bg: 'primary.700' }}
         >
-          Entrar
+          Sign in
         </Button>
 
       </VStack>

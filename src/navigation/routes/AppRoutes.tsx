@@ -1,17 +1,17 @@
 import React from 'react';
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerItem, DrawerContentComponentProps } from '@react-navigation/drawer';
 import CreateCustomerScreen from '../../screens/Customer/CreateCustomerScreen';
-import { View, Text } from 'react-native';
 import { useAuth } from '../../hooks/contexts';
 import ListCustomerScreen from '../../screens/Customer/ListCustomerScreen';
 import SalesStatiticsScreen from '../../screens/Statistics/SalesStatiticsScreen';
+import { Text, View } from 'native-base';
 
 const Drawer = createDrawerNavigator();
 
 function HomeScreen() {
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Welcome!</Text>
+        <View flex={1} alignItems={'center'} justifyContent={'center'}>
+            <Text color={'#222'}>Welcome!</Text>
         </View>
     );
 }
