@@ -7,8 +7,6 @@ import { useAuth } from './hooks/contexts';
 export default function Routes() {
   const { user, loading } = useAuth();
 
-  useEffect
-
   if (loading) {
     return (
       <Center flex={1}>
